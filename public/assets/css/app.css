@@ -1,0 +1,281 @@
+:root {
+    color-scheme: light;
+    --ink: #20242a;
+    --muted: #657080;
+    --line: #d8dee8;
+    --panel: #ffffff;
+    --soft: #f4f7fb;
+    --accent: #0d6f8f;
+    --accent-dark: #07536d;
+    --danger: #a83232;
+    --ok: #187347;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--ink);
+    background: var(--soft);
+}
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px 32px;
+    background: #102432;
+    color: white;
+}
+
+.brand {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.nav a,
+.logout-button {
+    color: white;
+    background: transparent;
+    border: 0;
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.page {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 28px;
+}
+
+.page-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+h1 {
+    margin: 0 0 8px;
+    font-size: 34px;
+}
+
+h2 {
+    margin: 4px 0 10px;
+    font-size: 20px;
+}
+
+p {
+    color: var(--muted);
+    line-height: 1.45;
+}
+
+.toolbar,
+.form-panel,
+.summary,
+.detail-panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px;
+}
+
+.toolbar {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: grid;
+    gap: 6px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+input,
+select {
+    min-height: 40px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font: inherit;
+}
+
+button,
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    border: 0;
+    border-radius: 6px;
+    padding: 8px 14px;
+    color: white;
+    background: var(--accent);
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button:hover,
+.button:hover {
+    background: var(--accent-dark);
+}
+
+.secondary {
+    background: #465766;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+}
+
+.product-card {
+    display: flex;
+    min-height: 280px;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px;
+}
+
+.category {
+    margin: 0;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.product-footer {
+    display: grid;
+    gap: 10px;
+}
+
+.available {
+    color: var(--ok);
+}
+
+.unavailable {
+    color: var(--danger);
+}
+
+.notice {
+    margin: 14px 0;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: white;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.cart-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 18px;
+    align-items: start;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.data-table th,
+.data-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    vertical-align: middle;
+}
+
+.data-table th {
+    background: #eaf0f6;
+    color: #384450;
+    font-size: 14px;
+}
+
+.summary dl,
+.summary-lines,
+.order-meta {
+    display: grid;
+    gap: 10px;
+}
+
+.summary div,
+.summary-lines div,
+.order-meta div {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.summary dd,
+.summary-lines dd,
+.order-meta dd {
+    margin: 0;
+    font-weight: 700;
+}
+
+.grand-total {
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+    font-size: 18px;
+}
+
+.form-panel {
+    max-width: 440px;
+}
+
+.form-panel form {
+    display: grid;
+    gap: 14px;
+}
+
+.quantity-input {
+    width: 72px;
+}
+
+@media (max-width: 760px) {
+    .site-header,
+    .page-head,
+    .toolbar,
+    .cart-layout {
+        display: grid;
+    }
+
+    .cart-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .page {
+        padding: 18px;
+    }
+}
