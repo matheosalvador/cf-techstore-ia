@@ -40,13 +40,13 @@ La commande supprime la base existante, recrée le schéma et recharge les donn�
 ## Lancement
 
 ```bash
-php -S localhost:8000 -t public
+php -S localhost:8001 -t public
 ```
 
 Ouvrir ensuite :
 
 ```text
-http://localhost:8000
+http://localhost:8001
 ```
 
 ## Tests
