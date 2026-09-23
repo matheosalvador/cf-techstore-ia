@@ -19,18 +19,30 @@ final class ProductRepository
 
     public function search(string $query, string $sort = 'name'): array
     {
-        $orderBy = $sort ?: 'name';
-        $where = $query !== '' ? "WHERE p.name LIKE '%" . $query . "%'" : '';
+        $allowedSorts = ['name', 'price_cents', 'available DESC, name'];
+        $orderBy = in_array($sort, $allowedSorts, true) ? $sort : 'name';
+
+        if ($query === '') {
+            $sql = "
+                SELECT p.*, c.name AS category_name
+                FROM products p
+                JOIN categories c ON c.id = p.category_id
+                ORDER BY $orderBy
+            ";
+            return $this->pdo->query($sql)->fetchAll();
+        }
 
         $sql = "
             SELECT p.*, c.name AS category_name
             FROM products p
             JOIN categories c ON c.id = p.category_id
-            $where
+            WHERE p.name LIKE :query
             ORDER BY $orderBy
         ";
 
-        return $this->pdo->query($sql)->fetchAll();
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(['query' => "%{$query}%"]);
+        return $stmt->fetchAll();
     }
 
     public function find(int $id): ?array
