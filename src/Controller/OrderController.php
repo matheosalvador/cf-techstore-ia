@@ -45,6 +45,12 @@ final class OrderController extends BaseController
             return;
         }
 
+        // Verification que la commande appartient a l'utilisateur
+        if ($order['user_id'] !== $user['id']) {
+            $this->json(['message' => 'Accès interdit.'], 403);
+            return;
+        }
+
         $this->json(['order' => $order]);
     }
 }
